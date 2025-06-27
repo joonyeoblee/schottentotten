@@ -1,6 +1,7 @@
+using Photon.Pun;
 using UnityEngine;
 
-    public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+    public abstract class Singleton<T> : MonoBehaviourPunCallbacks where T : MonoBehaviourPunCallbacks
     {
         public enum InitializationTiming
         {
