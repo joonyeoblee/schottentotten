@@ -7,6 +7,8 @@ public class CardSlot : MonoBehaviourPunCallbacks
     public Card Card => _card;
     public SpriteRenderer CardSprite;
     
+    public bool IsOccupied => _card != null;
+    
     public void Refresh(Card card)
     {
         _card = card;
@@ -14,6 +16,11 @@ public class CardSlot : MonoBehaviourPunCallbacks
         // {
         //      CardSprite.sprite = handle.Result;
         // };
+    }
+
+    public void Clear()
+    {
+        _card = null;
     }
     
     // RPC를 통해 카드 상태를 업데이트
