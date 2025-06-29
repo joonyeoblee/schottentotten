@@ -14,5 +14,11 @@ public class Card
 {
     public int CardNumber;
     public ECardColor Color;
-    
+    // public string CardImageAddress => $"{Color.ToString()}_{CardNumber}";
+    public string CardImageAddress => $"Card_{CardNumber}";
+    public Card(int cardNumber, ECardColor color)
+    {
+        CardNumber = cardNumber;
+        Color = color;
+    }
 }
