@@ -46,18 +46,25 @@ public class CardDragger : MonoBehaviourPun
                 var slotCollider = hit.GetComponent<Collider2D>();
                 var cardSlot = hit.GetComponent<CardSlot>();
                 var slotview = hit.GetComponent<PhotonView>();
+                
+                if(cardSlot == null || slotCollider == null) continue;
+
+                // 슬롯에 이미 카드가 있다면 배치 못함
+                if (cardSlot.IsOccupied)
+                {
+                    break;
+                }
                 // 다른 플레이어에게 카드 상태를 알려주는 RPC 호출
                 
                 // slotview.RPC("RPC_UpdateCardInSlot", RpcTarget.Others, 
                 //     _cardController.Card.CardNumber, 
                 //     (int)_cardController.Card.Color, 
                 //     _cardController.Card.CardImageAddress);
-
-                // 카드 UI 갱신
-                cardSlot.Refresh(_cardController.Card);
-
-                if (slotCollider != null && slotCollider.OverlapPoint(transform.position))
+                
+                // 카드 배치
+                if (slotCollider.OverlapPoint(transform.position))
                 {
+                    cardSlot.Refresh(_cardController.Card);
                     transform.position = hit.transform.position;
                     return;
                 }
