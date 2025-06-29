@@ -7,7 +7,8 @@ public enum ECardColor
     Green,
     Yellow,
     Purple,
-    Brown
+    Brown,
+    None
 }
 [Serializable]
 public class Card 
@@ -23,7 +24,7 @@ public class Card
 
     public Card()
     {
-        CardNumber = 1;
-        Color = ECardColor.Red; 
+        CardNumber = 0;
+        Color = ECardColor.None; 
     }
 }
