@@ -14,7 +14,7 @@ public class Room
     public float MaxPlayers { get; private set; }
     public float CurrentPlayers { get; private set; }
 
-    public Room(string roomTitle, string password, ERoomState roomState, float maxPlayers = 0, float currentPlayers = 0)
+    public Room(string roomTitle, string password, ERoomState roomState, float maxPlayers, float currentPlayers = 0)
     {
         RoomTitle = roomTitle;
         Password = password;

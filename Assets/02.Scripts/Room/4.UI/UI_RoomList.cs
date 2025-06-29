@@ -16,6 +16,10 @@ public class UI_RoomList : MonoBehaviourPunCallbacks
         foreach (RoomInfo info in roomList)
         {
             Debug.Log($"{info.Name} | RemovedFromList: {info.RemovedFromList}, Visible: {info.IsVisible}, Open: {info.IsOpen}");
+            GameObject roomObject = Instantiate(RoomPrefab, RoomContainer.transform);
+            Room room = new Room(info.Name, "", ERoomState.Waiting, info.MaxPlayers, info.PlayerCount);
+            UI_Room roomComp = roomObject.GetComponent<UI_Room>();
+            roomComp.Refresh(room);
         }
     }
     private void Awake()
@@ -25,7 +29,19 @@ public class UI_RoomList : MonoBehaviourPunCallbacks
 
     private void OnEnable()
     {
+        PhotonNetwork.AddCallbackTarget(this);
         Debug.Log("UI_RoomList: OnEnable 호출됨");
+
+        // 로비 재참가 (이미 로비 안에 있어도 OK)
+        // if (PhotonNetwork.InLobby)
+        // {
+        //     PhotonNetwork.LeaveLobby();
+        //     PhotonNetwork.JoinLobby();
+        // }
+        // else
+        // {
+        //     PhotonNetwork.JoinLobby();
+        // }
     }
     
     private void Update()

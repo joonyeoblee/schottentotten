@@ -1,3 +1,4 @@
+using Photon.Pun;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class UI_Room : MonoBehaviour
     }
     public void JoinRoom()
     {
-        GameObject.Find("UI_Lobby").GetComponent<UI_Lobby>().JoinRoomInList(_myRoom.RoomTitle);
+        PhotonNetwork.JoinRoom(_myRoom.RoomTitle);
     }
 
     private string ChangeStateToKR(ERoomState roomState)

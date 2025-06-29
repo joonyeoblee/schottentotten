@@ -53,7 +53,6 @@ public class UI_Lobby : MonoBehaviourPunCallbacks
         string roomName = RoomNameInputField.text + "_" + (int)Time.time;
         Debug.Log($"방 이름: {roomName}");
 
-        Room room = new Room(roomName, PasswordInputField.text, ERoomState.Waiting);
         RoomOptions options = new RoomOptions
         {
             MaxPlayers = 2,
@@ -75,23 +74,4 @@ public class UI_Lobby : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnJoinedRoom()
-    {
-        Debug.Log("OnJoinedRoom");
-    }
-
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        Debug.LogError($"방 생성 실패: {returnCode} - {message}");
-    }
-
-    public override void OnCreatedRoom()
-    {
-        Debug.Log("방 생성 성공!");
-    }
-
-    public void JoinRoomInList(string RoomName)
-    {
-        PhotonNetwork.JoinRoom(RoomName);
-    }
 }
