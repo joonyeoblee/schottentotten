@@ -48,19 +48,19 @@ public class CardDragger : MonoBehaviourPun
                 var slotview = hit.GetComponent<PhotonView>();
                 // 다른 플레이어에게 카드 상태를 알려주는 RPC 호출
                 
-                // slotview.RPC("RPC_UpdateCardInSlot", RpcTarget.Others, 
-                //     _cardController.Card.CardNumber, 
-                //     (int)_cardController.Card.Color, 
-                //     _cardController.Card.CardImageAddress);
+                slotview.RPC("RPC_UpdateCardInSlot", RpcTarget.Others, 
+                    _cardController.Card.CardNumber, 
+                    (int)_cardController.Card.Color, 
+                    _cardController.Card.CardImageAddress);
 
                 // 카드 UI 갱신
                 cardSlot.Refresh(_cardController.Card);
 
-                if (slotCollider != null && slotCollider.OverlapPoint(transform.position))
-                {
-                    transform.position = hit.transform.position;
-                    return;
-                }
+                // if (slotCollider != null && slotCollider.OverlapPoint(transform.position))
+                // {
+                //     transform.position = hit.transform.position;
+                //     return;
+                // }
             }
         }
 

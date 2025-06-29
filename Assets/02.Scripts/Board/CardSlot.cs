@@ -1,3 +1,4 @@
+using System;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -5,15 +6,20 @@ public class CardSlot : MonoBehaviourPunCallbacks
 {
     private Card _card;
     public Card Card => _card;
-    public SpriteRenderer CardSprite;
-    
+    private SpriteRenderer _cardSprite;
+
+    private void Start()
+    {
+        _cardSprite = GetComponent<SpriteRenderer>();
+    }
     public void Refresh(Card card)
     {
         _card = card;
-        // Addressables.LoadAssetAsync<Sprite>(_card.CardImageAddress).Completed += handle =>
-        // {
-        //      CardSprite.sprite = handle.Result;
-        // };
+        Addressables.LoadAssetAsync<Sprite>(_card.CardImageAddress).Completed += handle =>
+        {
+            _cardSprite.color = Color.white;
+             _cardSprite.sprite = handle.Result;
+        };
     }
     
     // RPC를 통해 카드 상태를 업데이트

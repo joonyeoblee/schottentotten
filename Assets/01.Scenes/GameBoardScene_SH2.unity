@@ -1318,7 +1318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card:
-    CardNumber: 0
+    CardNumber: 4
     Color: 0
 --- !u!1001 &1082034277
 PrefabInstance:
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card:
-    CardNumber: 0
+    CardNumber: 5
     Color: 0
 --- !u!1001 &1428406389
 PrefabInstance:
@@ -2336,7 +2336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card:
-    CardNumber: 0
+    CardNumber: 3
     Color: 0
 --- !u!1 &1719080412
 GameObject:
@@ -2759,7 +2759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card:
-    CardNumber: 0
+    CardNumber: 6
     Color: 0
 --- !u!1001 &1929888822
 PrefabInstance:
@@ -2839,7 +2839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card:
-    CardNumber: 0
+    CardNumber: 1
     Color: 0
 --- !u!1 &1987565428
 GameObject:
@@ -3055,7 +3055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card:
-    CardNumber: 0
+    CardNumber: 2
     Color: 0
 --- !u!1001 &8559177237968096317
 PrefabInstance:
