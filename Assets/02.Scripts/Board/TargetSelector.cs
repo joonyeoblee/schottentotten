@@ -21,10 +21,18 @@ public class TargetSelector : MonoBehaviour, IPointerClickHandler, IPointerEnter
     {
         _outlinable.enabled = false;
     }
+    
     public void OnPointerClick(PointerEventData eventData)
     {
-        // CombatManager.Instance.SetTarget(GetComponent<ITargetable>());
+        var cardSlot = GetComponent<CardSlot>();
+        if (cardSlot != null)
+        {
+            Debug.Log($"카드 클릭됨.{cardSlot.Card?.CardNumber}");
+        }
+        // if (cardSlot.Card == null)
+        //     Debug.LogWarning("이 슬롯에 카드가 없음!");
     }
+    
     public void ChangeOutlineColor(Color color)
     {
         _outlinable.OutlineParameters.Color = color;
@@ -32,18 +40,20 @@ public class TargetSelector : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        // CombatManager.Instance.ExitTarget();
+        _outlinable.enabled = false;
     }
+    
     private void Reset()
     {
-        if (GetComponent<Collider>() == null)
-        {
-            gameObject.AddComponent<CapsuleCollider2D>();
+        if (GetComponent<Collider2D>() == null)
+            gameObject.AddComponent<BoxCollider2D>();
+
+        if (GetComponent<Outlinable>() == null)
             gameObject.AddComponent<Outlinable>();
-        }
     }
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
-        // CombatManager.Instance.EnterTarget(this);
+        _outlinable.enabled = true;
     }
 }
