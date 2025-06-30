@@ -1,7 +1,8 @@
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CardDragger : MonoBehaviourPun
+public class CardDragger : BaseSelectable, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     private bool _isDragging = false;
     private Vector3 _dragOffset;
@@ -17,7 +18,7 @@ public class CardDragger : MonoBehaviourPun
     }
 
     // 카드 드래그 시작
-    private void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
         _isDragging = true;
         Vector3 mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -25,7 +26,7 @@ public class CardDragger : MonoBehaviourPun
     }
 
     // 카드 드래그 중
-    private void OnMouseDrag()
+    public void OnDrag(PointerEventData eventData)
     {
         if (!_isDragging) return;
         Vector3 mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -33,7 +34,7 @@ public class CardDragger : MonoBehaviourPun
     }
 
     // 마우스 떼었을 때
-    private void OnMouseUp()
+    public void OnPointerUp(PointerEventData eventData)
     {
         _isDragging = false;
 
